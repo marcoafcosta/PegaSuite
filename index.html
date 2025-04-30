@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PegaOne GPT Client</title>
+  <style>
+    :root { font-family: system-ui, sans-serif; background: #f9fafb; }
+    body { margin: 0; padding: 1.5rem 1rem; display: flex; flex-direction: column; gap: 1rem; max-width: 48rem; margin-inline: auto; }
+
+    #chat {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      padding-bottom: .5rem;
+    }
+    .bubble {
+      padding: .75rem 1rem;
+      border-radius: 1.25rem;
+      white-space: pre-wrap;
+      line-height: 1.4;
+      max-width: 80%;
+      box-shadow: 0 1px 3px rgb(0 0 0 / .1);
+      word-break: break-word;
+    }
+    .user       { align-self: flex-end; background: #2563eb; color: #fff; }
+    .assistant  { align-self: flex-start; background: #e5e7eb; }
+
+    form { display: flex; gap: .5rem; }
+    textarea { flex: 1; resize: none; min-height: 2.75rem; padding: .5rem .75rem; border: 1px solid #d1d5db; border-radius: .75rem; font: inherit; }
+    button   { padding: .5rem 1rem; border: none; border-radius: .75rem; font: inherit; background: #2563eb; color: #fff; cursor: pointer; }
+    button:disabled { opacity: .5; cursor: default; }
+  </style>
+</head>
+<body>
+  <h1>PegaOne GPT client</h1>
+  <section id="chat"></section>
+
+  <form id="form">
+    <textarea id="prompt" placeholder="Type a message…" rows="1"></textarea>
+    <button id="sendBtn">Send</button>
+  </form>
+    
+  <script type="module">
+    // === Configuration ===
+    // 1. Provide ONE of the following globals *before* loading this file:
+    //    window.PEGAONE_ENDPOINT  – full URL to the chat endpoint
+    //    window.PEGAONE_API       – base URL; we'll append "/chat" if needed
+    // 2. Optionally provide window.PEGAONE_API_KEY for a Bearer token header.
+    // 3. Optionally provide window.PEGAONE_MODEL for OpenAI‑style POSTs.
+
+
+    const API_BASE     = "https://api.openai.com/v1/chat/completions";
+    const API_ENDPOINT = "https://api.openai.com/v1/chat/completions";
+    const API_KEY      = "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";
+    const MODEL        = "gpt-4o-mini";
+
+    const chatEl   = document.getElementById("chat");
+    const formEl   = document.getElementById("form");
+    const promptEl = document.getElementById("prompt");
+    const sendBtn  = document.getElementById("sendBtn");
+
+    const messages = [];
+
+    formEl.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const text = promptEl.value.trim();
+      if (!text) return;
+      promptEl.value = "";
+      pushMsg("user", text);
+
+      sendBtn.disabled = true;
+      try {
+        const reply = await fetchReply();
+        pushMsg("assistant", reply);
+      } catch (err) {
+        pushMsg("assistant", `❌ ${err.message}`);
+      }
+      sendBtn.disabled = false;
+    });
+
+    async function fetchReply() {
+      const headers = { "Content-Type": "application/json", "Authorization": `Bearer ${API_KEY}`  };
+      
+
+      // Build body – OpenAI style if a model is specified, else plain messages
+      const body = MODEL ? { model: MODEL, messages } : { messages };
+
+      const res = await fetch(API_ENDPOINT, {
+        method: "POST",
+        headers,
+        body: JSON.stringify(body),
+      });
+      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+      const data = await res.json();
+
+      // Flexible parsing depending on backend shape
+      let content =
+        data?.choices?.[0]?.message?.content ?? // OpenAI style
+        data?.answer ??
+        data?.content ??
+        data?.message ??
+        JSON.stringify(data);
+
+      if (typeof content !== "string") content = String(content);
+      return content;
+    }
+
+    function pushMsg(role, content) {
+      messages.push({ role, content });
+      render();
+    }
+
+    function render() {
+      chatEl.innerHTML = messages
+        .map((m) => `<div class="bubble ${m.role}">${escapeHTML(m.content)}</div>`)
+        .join("");
+      chatEl.scrollTop = chatEl.scrollHeight;
+    }
+
+    function escapeHTML(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>
