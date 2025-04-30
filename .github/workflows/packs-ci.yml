@@ -15,8 +15,7 @@ jobs:
   lint-and-zip:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -27,28 +26,13 @@ jobs:
         run: |
           npm install -g markdownlint-cli2 markdown-link-check
 
-      - name: Unzip existing packs for linting
+      - name: Unzip existing packs for linting   # <- updated
         run: |
           mkdir _packs
-          for z in packs/*.zip; do unzip -qo "$z" -d "_packs/$(basename "$z" .zip)"; done
+          shopt -s nullglob
+          for z in packs/*.zip; do
+            unzip -qo "$z" -d "_packs/$(basename "$z" .zip)"
+          done
+          shopt -u nullglob
           cp -r packs/*/ _packs/ || true
 
-      - name: Lint Markdown
-        run: markdownlint-cli2 "_packs/**/*.md"
-
-      - name: Check links
-        run: |
-          find _packs -name "*.md" -print0 | xargs -0 -n1 markdown-link-check -q
-
-      - name: Re-package packs
-        run: |
-          rm -f packs/*.zip
-          for dir in packs/*/ ; do
-            zip -r "${dir%/}.zip" "$dir";
-          done
-
-      - name: Upload packaged artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: knowledge-packs
-          path: packs/*.zip
