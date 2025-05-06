@@ -1,68 +1,56 @@
-# 🧠 PegaOne – Your Pega Enterprise Assistant
+# PegaOne GPT
 
-**PegaOne** is a role-aware AI assistant built to support all levels of Pega practitioners — from System Architects and Business Analysts to Decisioning Consultants and Compliance Auditors. Designed for enterprise-scale support, PegaOne combines technical depth, certification coaching, and real-world examples with guardrail-aligned guidance.
+PegaOne is an AI-driven assistant designed to accelerate Pega platform adoption, from initial discovery through ongoing operations. It provides ready-to-use examples, reference artifacts, and troubleshooting guidance tailored to any user role or domain expertise.
 
----
+## Repository Structure
+PegaOne/
+├── cfg/                       # Configuration files (pegaone_gpt_config.txt)
+├── docs/                      # Detailed guides and tutorials
+├── packs/                     # Expertise-area and role-based knowledge pack folders
+│   ├── blueprint_and_discovery/
+│   ├── case_management_and_lifecycle/
+│   ├── process_modeling_and_bpmn/
+│   └── ... (other 20 areas)
+├── zipped_packs/              # Compiled ZIP archives of packs
+│   ├── blueprint_and_discovery.zip
+│   ├── case_management_and_lifecycle.zip
+│   └── ...
+├── PegaOneExpertise_packs.zip # Master archive (all packs)
+├── README.md                  # This file
+├── LICENSE
+└── .github/                   # CI/CD workflows and issue templates
 
-## 🔧 Key Features
+## Getting Started
 
-- 🎓 **Supports All Pega Roles**  
-  System Architects, Business Architects, LSA, CDH, DevOps, Test Leads, and more.
+1. **Clone the repository**
+   ```bash
+git clone https://github.com/marcoafcosta/PegaOne.git
+cd PegaOne
 
-- 📚 **Role-Based Knowledge Packs**  
-  Deep, curated content covering workflows, integrations, deployment, UI, and reporting.
+2. **Download Packs**
 
-- 🧩 **XML + RAP Rule Summarization**  
-  Parses Product exports, RAP files, and Flow XML into human-readable insights.
+Unzip PegaOneExpertise_packs.zip or individual zips in zipped_packs/.
 
-- 🌐 **REST API Guidance**  
-  Provides usage examples for calling and integrating Pega APIs securely.
+3. **Explore Packs**
 
-- 🧠 **Certification Coaching**  
-  Tailored advice and study material for PCSA, PCBA, PCDC, PCLSA and others.
+## Each pack contains:
 
----
+docs/: Overview, concepts, scenarios, FAQ, troubleshooting.
 
-## 📂 Included Content
+workflows/bpmn/: BPMN 2.0 diagrams (.bpmn).
 
-### ✅ Knowledge Packs (Uploaded ZIPs)
-- `pega_gpt_all_roles_master_pack.zip` – full coverage by role
-- `pega_gpt_advanced_extensions.zip` – code interpreter, RAP training, API integration
+workflows/pega/: Pega XML process rules (_pega.xml).
 
-### 📄 Configuration
-- `pegaone_gpt_config.txt` – system prompt and setup guide
-- `pega_gpt_knowledge_pack_index.md` – index of all roles and modules
+xml/: Example XML rules with example_schema.xsd.
 
----
+code/: Java code samples (pom.xml required for Maven builds).
 
-## 🛠 How to Use
+4. **Import & Validate**
 
-1. Visit: [https://chat.openai.com/gpts](https://chat.openai.com/gpts)
-2. Click **"Create a GPT"**
-3. Name it: **PegaOne – Your Pega Enterprise Assistant**
-4. Copy/paste the system prompt from `pegaone_gpt_config.txt`
-5. Upload the included `.zip` knowledge packs
-6. Add prompt suggestions like:
-   - “Help me design a Case Type with stages and steps”
-   - “Summarize this RAP file”
-   - “Prepare me for the PCSA exam”
+BPMN: Open .bpmn files in Camunda Modeler.
 
----
+XML: Validate with xmllint --noout --schema example_schema.xsd file.xml.
 
-## 🧭 Ideal Use Cases
+Java: Build with Maven (mvn compile).
 
-- 📘 Pega learning and onboarding assistant
-- 🔧 Daily implementation support across Studio roles
-- 🧪 Rule validation and test strategy guidance
-- 🏗 Deployment, branching, and DevOps advisory
-- 🎯 Certification study and simulation
 
----
-
-## 📣 License & Use
-
-PegaOne is designed for personal, organizational, or consulting use. All Pega-related terms, logos, and content belong to Pegasystems Inc. This GPT is an educational companion and does not replace Pega support.
-
----
-
-Created with ❤️ to streamline Pega delivery and learning.
