@@ -1,58 +1,77 @@
 # PegaOne GPT
 
-PegaOne is an AI-driven assistant designed to accelerate Pega platform adoption, from initial discovery through ongoing operations. It provides ready-to-use examples, reference artifacts, and troubleshooting guidance tailored to any user role or domain expertise.
+PegaOne is an AI-driven assistant designed to accelerate Pega platform adoption—from initial discovery through ongoing operations. It provides ready-to-use examples, reference artifacts, and troubleshooting guidance tailored to any user role or domain expertise.
 
 ## Repository Structure
+
+```
 PegaOne/
-├── cfg/                       # Configuration files (pegaone_gpt_config.txt)
-├── docs/                      # Detailed guides and tutorials
-├── packs/                     # Expertise-area and role-based knowledge pack folders
+├── cfg/                             # Configuration files (`pegaone_gpt_config.txt`)
+├── docs/                            # Detailed guides and tutorials
+├── packs/                           # Knowledge packs (see `pega_gpt_knowledge_pack_index.md` for full list)
 │   ├── blueprint_and_discovery/
 │   ├── case_management_and_lifecycle/
 │   ├── process_modeling_and_bpmn/
-│   └── ... (other 20 areas)
-├── zipped_packs/              # Compiled ZIP archives of packs
+│   └── ...                          # 25 total packs, including new areas (accessibility, services, troubleshooting)
+├── zipped_packs/                    # ZIP archives of individual packs and master archive
+│   ├── master.zip                   # All packs in one archive
 │   ├── blueprint_and_discovery.zip
-│   ├── case_management_and_lifecycle.zip
-│   └── ...
-├── PegaOneExpertise_packs.zip # Master archive (all packs)
-├── README.md                  # This file
-├── LICENSE
-└── .github/                   # CI/CD workflows and issue templates
+│   └── ...                          # Individual pack archives
+├── pega_gpt_knowledge_pack_index.md # Index of all available knowledge packs
+├── README.md                        # This file
+├── LICENSE                          # Repository license
+└── .github/                         # CI/CD workflows and issue templates
+```
 
 ## Getting Started
 
-1. **Clone the repository**
-    ```
-      bash
-      git clone https://github.com/marcoafcosta/PegaOne.git
-      cd PegaOne
-    ```
+### 1. Clone the repository
 
-2. **Download Packs**
+```bash
+git clone https://github.com/marcoafcosta/PegaOne.git
+cd PegaOne
+```
 
-Unzip PegaOneExpertise_packs.zip or individual zips in zipped_packs/.
+### 2. Download Packs
 
-3. **Explore Packs**
+* To extract all packs at once:
 
-## Each pack contains:
+  ```bash
+  unzip zipped_packs/master.zip -d packs/
+  ```
+* Or unzip individual archives:
 
-docs/: Overview, concepts, scenarios, FAQ, troubleshooting.
+  ```bash
+  unzip zipped_packs/<pack_name>.zip -d packs/
+  ```
 
-workflows/bpmn/: BPMN 2.0 diagrams (.bpmn).
+### 3. Explore Packs
 
-workflows/pega/: Pega XML process rules (_pega.xml).
+Each pack provides focused guidance, examples, and artifacts for a specific domain area of the Pega Platform.
 
-xml/: Example XML rules with example_schema.xsd.
+## Pack Structure
 
-code/: Java code samples (pom.xml required for Maven builds).
+Every knowledge pack follows this layout:
 
-4. **Import & Validate**
+* `docs/`             : Overview, concepts, scenarios, FAQs, and troubleshooting tips
+* `workflows/bpmn/`   : BPMN 2.0 process diagrams (`.bpmn` files)
+* `workflows/pega/`   : Pega XML process rules (`*_pega.xml` files)
+* `xml/`              : Example XML rule definitions with accompanying XSD schema
+* `code/`             : Java code snippets and Maven project descriptors (e.g., `pom.xml`)
 
-BPMN: Open .bpmn files in Camunda Modeler.
+## Import & Validate
 
-XML: Validate with xmllint --noout --schema example_schema.xsd file.xml.
+* **BPMN**: Open `.bpmn` files in Camunda Modeler or any BPMN 2.0–compliant tool.
+* **XML**: Validate rules against the provided schema:
 
-Java: Build with Maven (mvn compile).
+  ```bash
+  xmllint --noout --schema example_schema.xsd <file>.xml
+  ```
+* **Java**: Build and compile samples using Maven:
 
+  ```bash
+  mvn compile
+  ```
+
+---
 
