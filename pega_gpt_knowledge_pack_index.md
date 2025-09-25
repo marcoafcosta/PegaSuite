@@ -1,31 +1,49 @@
-# Knowledge Pack Index
+# 🧠 Pega Suite GPT – Knowledge Pack Index
 
-| Area Slug                              | Pack Name                                  | Download Path                                            |
-|----------------------------------------|--------------------------------------------|----------------------------------------------------------|
-| blueprint_and_discovery                | Blueprint & Discovery                      | `zipped_packs/blueprint_and_discovery.zip`               |
-| case_management_and_lifecycle          | Case Management & Lifecycle                | `zipped_packs/case_management_and_lifecycle.zip`         |
-| process_modeling_and_bpmn              | Process Modeling & BPMN                    | `zipped_packs/process_modeling_and_bpmn.zip`             |
-| ui_ux_design_and_app_studio            | UI/UX Design & App Studio                  | `zipped_packs/ui_ux_design_and_app_studio.zip`           |
-| data_modeling_and_data_pages           | Data Modeling & Data Pages                 | `zipped_packs/data_modeling_and_data_pages.zip`          |
-| integration_and_connectors             | Integration & Connectors                   | `zipped_packs/integration_and_connectors.zip`            |
-| decisioning_and_next-best-action       | Decisioning & Next-Best-Action             | `zipped_packs/decisioning_and_next-best-action.zip`      |
-| reporting_analytics_and_dashboards     | Reporting, Analytics & Dashboards          | `zipped_packs/reporting_analytics_and_dashboards.zip`    |
-| security_and_access_control            | Security & Access Control                  | `zipped_packs/security_and_access_control.zip`           |
-| devops_and_deployment_automation       | DevOps & Deployment Automation             | `zipped_packs/devops_and_deployment_automation.zip`      |
-| cloud_and_pega_cloud_services          | Cloud & Pega Cloud Services                | `zipped_packs/cloud_and_pega_cloud_services.zip`         |
-| performance_tuning_and_scalability     | Performance Tuning & Scalability           | `zipped_packs/performance_tuning_and_scalability.zip`    |
-| system_architecture_and_governance     | System Architecture & Governance           | `zipped_packs/system_architecture_and_governance.zip`    |
-| testing_and_quality_assurance          | Testing & Quality Assurance                | `zipped_packs/testing_and_quality_assurance.zip`         |
-| robotics_and_rda_desktop_automation    | Robotics & RDA (Desktop Automation)        | `zipped_packs/robotics_and_rda_desktop_automation.zip`   |
-| ai_ml_and_predictive_analytics         | AI/ML & Predictive Analytics               | `zipped_packs/ai_ml_and_predictive_analytics.zip`        |
-| conversational_channels_and_chatbots   | Conversational Channels & Chatbots         | `zipped_packs/conversational_channels_and_chatbots.zip`  |
-| mobile_and_offline_applications        | Mobile & Offline Applications              | `zipped_packs/mobile_and_offline_applications.zip`       |
-| compliance_audit_and_reporting         | Compliance, Audit & Reporting              | `zipped_packs/compliance_audit_and_reporting.zip`        |
-| sdks_apis_and_custom_extensions        | SDKs, APIs & Custom Extensions             | `zipped_packs/sdks_apis_and_custom_extensions.zip`       |
-| low_code_configuration_best_practices  | Low-Code Configuration Best Practices      | `zipped_packs/low_code_configuration_best_practices.zip` |
-| upgrade_and_patch_management           | Upgrade & Patch Management                 | `zipped_packs/upgrade_and_patch_management.zip`          |
-| **-- New Packs for Missing Areas --**  |                                            |                                                          |
-| user_experience_and_accessibility      | User Experience & Accessibility            | `zipped_packs/user_experience_and_accessibility.zip`     |
-| integration_and_services               | Integration & Services                     | `zipped_packs/integration_and_services.zip`              |
-| monitoring_and_troubleshooting         | Monitoring & Troubleshooting               | `zipped_packs/monitoring_and_troubleshooting.zip`        |
-| **master**                             | All Packs Master Archive                   | `zipped_packs/master.zip`                                |
+Below is the full list of curated knowledge packs available in **Pega Suite GPT**, aligned with Pega 8.8 through Infinity ’25 releases.
+
+Each pack includes domain-specific guidance, templates, XML/BPMN assets, and integration examples.
+
+---
+
+## 🔧 Core Platform Packs
+
+| Pack Name | Description |
+|----------|-------------|
+| `pega_version_alignment` | Maps features across Pega versions, migration paths, and strategy alignment |
+| `constellation_ui_and_dxapi` | Modern UI design patterns, DX API v2 migration, Constellation setup |
+| `genai_and_copilot_enablement` | Pega GenAI™ usage, Copilot templates, LLM integration and governance |
+| `decisioning_and_next_best_action` | Adaptive Decisioning 2.0, Value Finder, simulation, NBA logic |
+| `ai_ml_and_predictive_analytics` | Predictive analytics, GenAI in CDH, ML model integration |
+| `cloud_and_pega_cloud_services` | Cloud Choice (Kubernetes), observability (Datadog, Splunk), logging |
+| `devops_and_deployment_automation` | Pipelines for Constellation, Deployment Manager 6.x, microservices |
+
+---
+
+## ⚙️ Architecture & Integration Packs
+
+| Pack Name | Description |
+|----------|-------------|
+| `pega_marketplace_and_components` | Marketplace accelerators, App Studio templates, reusable components |
+| `business_agility_and_process_fabric` | Federated case management, bridges, Pega Process Fabric Hub |
+| `sustainability_and_finops` | Cloud cost optimization, FinOps patterns, sustainability governance |
+
+---
+
+## 👥 Role-Specific Packs
+
+| Role Pack | Description |
+|-----------|-------------|
+| `roles/ai_genai_specialist` | Prompt design, LLM orchestration, GenAI/CDH integration |
+| `roles/cloud_finops_engineer` | Pega Cloud billing optimization, observability tools, scaling |
+| `roles/low_code_citizen_developer` | App Studio-driven delivery, templates, guided workflows |
+
+---
+
+Each pack contains:
+- `docs/` → guidance, FAQs, and best practices  
+- `workflows/` → BPMN + Pega process assets  
+- `xml/` → example rule definitions & schemas  
+- `code/` → Java/Maven integration snippets (where applicable)
+
+For help using these packs, see the main [`README.md`](./README.md).

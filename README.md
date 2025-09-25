@@ -1,77 +1,119 @@
-# PegaOne GPT
+# Pega Suite GPT
 
-PegaOne is an AI-driven assistant designed to accelerate Pega platform adoption—from initial discovery through ongoing operations. It provides ready-to-use examples, reference artifacts, and troubleshooting guidance tailored to any user role or domain expertise.
+Pega Suite is an AI-driven assistant designed to accelerate Pega platform adoption—from initial discovery through ongoing operations. It provides ready-to-use examples, reference artifacts, and troubleshooting guidance tailored to any user role or domain expertise.
 
-## Repository Structure
-
-```
-PegaOne/
-├── cfg/                             # Configuration files (`pegaone_gpt_config.txt`)
-├── docs/                            # Detailed guides and tutorials
-├── packs/                           # Knowledge packs (see `pega_gpt_knowledge_pack_index.md` for full list)
-│   ├── blueprint_and_discovery/
-│   ├── case_management_and_lifecycle/
-│   ├── process_modeling_and_bpmn/
-│   └── ...                          # 25 total packs, including new areas (accessibility, services, troubleshooting)
-├── zipped_packs/                    # ZIP archives of individual packs and master archive
-│   ├── master.zip                   # All packs in one archive
-│   ├── blueprint_and_discovery.zip
-│   └── ...                          # Individual pack archives
-├── pega_gpt_knowledge_pack_index.md # Index of all available knowledge packs
-├── README.md                        # This file
-├── LICENSE                          # Repository license
-└── .github/                         # CI/CD workflows and issue templates
-```
-
-## Getting Started
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/marcoafcosta/PegaOne.git
-cd PegaOne
-```
-
-### 2. Download Packs
-
-* To extract all packs at once:
-
-  ```bash
-  unzip zipped_packs/master.zip -d packs/
-  ```
-* Or unzip individual archives:
-
-  ```bash
-  unzip zipped_packs/<pack_name>.zip -d packs/
-  ```
-
-### 3. Explore Packs
-
-Each pack provides focused guidance, examples, and artifacts for a specific domain area of the Pega Platform.
-
-## Pack Structure
-
-Every knowledge pack follows this layout:
-
-* `docs/`             : Overview, concepts, scenarios, FAQs, and troubleshooting tips
-* `workflows/bpmn/`   : BPMN 2.0 process diagrams (`.bpmn` files)
-* `workflows/pega/`   : Pega XML process rules (`*_pega.xml` files)
-* `xml/`              : Example XML rule definitions with accompanying XSD schema
-* `code/`             : Java code snippets and Maven project descriptors (e.g., `pom.xml`)
-
-## Import & Validate
-
-* **BPMN**: Open `.bpmn` files in Camunda Modeler or any BPMN 2.0–compliant tool.
-* **XML**: Validate rules against the provided schema:
-
-  ```bash
-  xmllint --noout --schema example_schema.xsd <file>.xml
-  ```
-* **Java**: Build and compile samples using Maven:
-
-  ```bash
-  mvn compile
-  ```
+Pega Suite is **up-to-date with the Pega 8.8 → 24.x platform**, and fully aligned with **Pega Infinity ’25** feature roadmap, including:
+- Constellation UI & DX API v2
+- Pega GenAI™ & Copilot capabilities
+- Adaptive Decisioning 2.0
+- Cloud Choice & Kubernetes deployments
+- FinOps & Sustainability optimization
+- New roles such as GenAI Specialist & Citizen Developers
 
 ---
 
+## 📁 Repository Structure
+
+```
+PegaSuite/
+├── cfg/
+├── docs/
+├── packs/
+│   ├── constellation_ui_and_dxapi/
+│   ├── genai_and_copilot_enablement/
+│   ├── pega_version_alignment/
+│   ├── pega_marketplace_and_components/
+│   ├── business_agility_and_process_fabric/
+│   ├── sustainability_and_finops/
+│   ├── decisioning_and_next_best_action/
+│   ├── ai_ml_and_predictive_analytics/
+│   ├── cloud_and_pega_cloud_services/
+│   ├── devops_and_deployment_automation/
+│   └── roles/
+│       ├── ai_genai_specialist/
+│       ├── cloud_finops_engineer/
+│       └── low_code_citizen_developer/
+├── zipped_packs/
+│   ├── master.zip
+│   ├── constellation_ui_and_dxapi.zip
+│   ├── genai_and_copilot_enablement.zip
+│   ├── pega_version_alignment.zip
+│   ├── pega_marketplace_and_components.zip
+│   ├── business_agility_and_process_fabric.zip
+│   ├── sustainability_and_finops.zip
+│   ├── decisioning_and_next_best_action.zip
+│   ├── ai_ml_and_predictive_analytics.zip
+│   ├── cloud_and_pega_cloud_services.zip
+│   ├── devops_and_deployment_automation.zip
+│   ├── roles_ai_genai_specialist.zip
+│   ├── roles_cloud_finops_engineer.zip
+│   ├── roles_low_code_citizen_developer.zip
+├── pega_gpt_knowledge_pack_index.md
+├── README.md
+├── LICENSE
+└── .github/
+```
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+gh repo clone marcoafcosta/PegaSuite
+cd PegaSuite
+```
+
+### 2. Download Knowledge Packs
+
+To extract all packs at once:
+
+```bash
+unzip zipped_packs/master.zip -d packs/
+```
+
+Or extract individual archives:
+
+```bash
+unzip zipped_packs/<pack_name>.zip -d packs/
+```
+
+## 📦 Explore the Packs
+
+Each pack provides focused guidance, templates, and examples for a specific area of the Pega platform (architecture, automation, AI, UI, DevOps, and more).
+
+## 🧱 Pack Folder Layout
+
+Each pack follows this structure:
+
+```
+pack_name/
+├── docs/
+├── workflows/bpmn/
+├── workflows/pega/
+├── xml/
+├── code/
+```
+
+## 🧪 Validate or Test
+
+**BPMN** — Open `.bpmn` files in Camunda Modeler  
+**XML** — Validate with:
+
+```bash
+xmllint --noout --schema example_schema.xsd <file>.xml
+```
+
+**Java** — Compile with:
+
+```bash
+mvn compile
+```
+
+## 🧭 What's New
+
+- ✅ GenAI & Copilot enablement
+- ✅ DX API v2 migration
+- ✅ Infinity ’25 alignment
+- ✅ Cloud Choice deployment
+- ✅ FinOps & Sustainability packs
+- ✅ Role packs: GenAI Specialist, FinOps Engineer, Citizen Dev
